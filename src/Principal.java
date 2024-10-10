@@ -28,11 +28,13 @@ public class Principal {
                 4) Real Brasileño ==> Dólar
                 5) Dólar ==> Peso Colombiano
                 6) Peso Colombiano ==> Dólar
-                7) Salir
+                7) Dólar ==> Peso Chileno
+                8) Peso Chileno ==> Dólar
+                9) Salir
                  **
                 """;
         Scanner teclado = new Scanner(System.in);
-        while (opcion != 7){
+        while (opcion != 9){
             double valor = 0;
             String mensajeTexto = "";
             System.out.println(menu);
@@ -89,6 +91,22 @@ public class Principal {
                         System.out.println(mensajeTexto);
                         break;
                     case 7:
+                        System.out.println("Ingresa la Cantidad de Dolares a convertir a Pesos Chileno: ");
+                        moneda = teclado.nextInt();
+                        valor = (double)moneda * Double.parseDouble(MonedasApi.CLP());
+                        mensajeTexto = "El Valor "+String.format("%.2f", (double)moneda)+" USD Corresponde a "+ String.format("%.2f", valor) +" CLP.";
+                        logs.guardarTxt(mensajeTexto);
+                        System.out.println(mensajeTexto);
+                        break;
+                    case 8:
+                        System.out.println("Ingresa la Cantidad de Pesos Chileno a convertir a Dolares: ");
+                        moneda = teclado.nextInt();
+                        valor = (double)moneda / Double.parseDouble(MonedasApi.CLP());
+                        mensajeTexto = "El Valor "+String.format("%.2f", (double)moneda)+" CLP Corresponde a "+ String.format("%.2f", valor) +" USD.";
+                        logs.guardarTxt(mensajeTexto);
+                        System.out.println(mensajeTexto);
+                        break;
+                    case 9:
                         System.out.println("Finalizando el programa. Muchas gracias por usar nuestros servicios");
                         break;
                     default:
